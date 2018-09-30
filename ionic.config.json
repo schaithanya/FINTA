@@ -1,0 +1,7 @@
+{
+  "name": "FINTA",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
