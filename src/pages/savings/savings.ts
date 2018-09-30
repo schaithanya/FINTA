@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { of } from 'rxjs/observable/of';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AlertController } from 'ionic-angular';
+import { Modal, ModalController, ModalOptions } from 'ionic-angular';
 
 @Component({
   selector: 'page-savings',
@@ -24,7 +25,7 @@ export class SavingsPage {
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
   expandedElement: any;
 
-  constructor(public alertCtrl: AlertController, public navCtrl: NavController) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, private modal:ModalController) {
 
   } 
   items = [
@@ -34,38 +35,20 @@ export class SavingsPage {
   ];
 
   addSavingItem() {
-      item:Element;
-      const prompt = this.alertCtrl.create({
-        title: 'Saving Item',
-        message: "Enter a name for this new album you're so keen on adding",
-        inputs: [
-          {
-            name: 'name',
-            placeholder: 'Name'
-          },
-          {
-            name: 'type',
-            placeholder: 'Saving Type',
-            },
-        ],
-        buttons: [
-          {
-            text: 'Cancel',
-            handler: data => {
-              console.log('Cancel clicked');
-            }
-          },
-          {
-            text: 'Save',
-            handler: data => {
-              let item: Element = { position: 1, name: data.title, weight: 1.0079, symbol: 'H' };
-              
-              console.log(data);
-            }
-          }
-        ]
-      });
-      prompt.present();
+    const myPageOptions:ModalOptions = {
+      showBackdrop : true,
+      enableBackdropDismiss : true
+    }
+      const myData ={
+        name:'Test 1',
+        occupation: 'Developer'
+      };
+      const addEditSavingsPage:Modal = this.modal.create('AddEditSavingsPage',{data:myData}, myPageOptions);
+      addEditSavingsPage.present();
+
+      addEditSavingsPage.onDidDismiss((data) =>{
+        console.log(data);
+      })
     }
   
   onItemClick(item) {
