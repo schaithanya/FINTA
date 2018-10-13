@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>My Bills</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Edit Bill</h2>
+    <form (ngSubmit)="updateData()">  
+      <ion-item>
+        <ion-label>Type</ion-label>
+        <ion-select [(ngModel)]="data.type" name="type" required="">
+          <ion-option value="Income">Income</ion-option>
+          <ion-option value="Expense">Expense</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Amount</ion-label>
+          <ion-input type="number" placeholder="Amount" [(ngModel)]="data.amount" name="amount" required="" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Created Date</ion-label>
+          <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.createdDate" name="createdDate" required=""></ion-datetime>
+      </ion-item>
+      <ion-item>
+            <ion-label>Remainder Date</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.remainderDate" name="remainderDate" required=""></ion-datetime>
+      </ion-item> 
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" placeholder="Description" [(ngModel)]="data.description" name="description" required="" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>DocType</ion-label>
+          <ion-input type="text" placeholder="Description" [(ngModel)]="data.docType" name="docType" required="" ></ion-input>
+        </ion-item>
+      <ion-input type="hidden" [(ngModel)]="data.rowId" name="rowId"></ion-input>
+      <button ion-button type="submit" block>Update Data</button>
+    </form>
+  </ion-content>

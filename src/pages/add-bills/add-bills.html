@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>My Bills</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+    <h2>Bill Data</h2>
+    <form (ngSubmit)="saveData()">
+          <ion-item>
+              <ion-label>Type</ion-label>
+              <ion-select [(ngModel)]="data.type" name="type" required="">
+                <ion-option value="Income">Income</ion-option>
+                <ion-option value="Expense">Expense</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Amount</ion-label>
+                <ion-input type="number" placeholder="Amount" [(ngModel)]="data.amount" name="amount" required="" ></ion-input>
+              </ion-item>
+              <ion-item>      
+        <ion-label>Created Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.createdDate" name="createdDate" required=""></ion-datetime>
+      </ion-item>
+      <ion-item>
+      <ion-label>RemainderDate Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="data.remainderDate" name="remainderDate" required=""></ion-datetime>
+    </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+        <ion-input type="text" placeholder="Description" [(ngModel)]="data.description" name="description" required="" ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label>Document Path</ion-label>
+          <ion-input type="text" placeholder="Doc Path" [(ngModel)]="data.docPath" name="docPath" required="" ></ion-input>
+        </ion-item>
+      <button ion-button type="submit" block>Save Data</button>
+    </form>
+  </ion-content>
+  
